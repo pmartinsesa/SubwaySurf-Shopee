@@ -11,7 +11,7 @@ namespace Assets.Scripts.Player
         public float staticVelocity;
 
         private Vector3 _pastPosition;
-        private Rigidbody _rigdbody;  
+        private Rigidbody _rigdbody;
 
         private void Awake()
         {
