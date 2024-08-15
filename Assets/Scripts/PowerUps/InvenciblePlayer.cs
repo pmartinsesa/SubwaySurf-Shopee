@@ -5,7 +5,7 @@ namespace Assets.Scripts.PowerUps
 {
     public class InvenciblePlayer : PowerUpsBase
     {
-        private Color DEFAULT_COLOR = new Color(1f, 1f, 1f, 1f);
+        private Color DEFAULT_COLOR = Color.white;
 
         [Header("SpeedUp Settings")]
         public Color InvencibleColor;
@@ -14,7 +14,7 @@ namespace Assets.Scripts.PowerUps
         {
             MovementHelper.Instance.ChangeStateIsInvencible();
             ChangePlayerColor(InvencibleColor);
-            Invoke(nameof(EndPowerUp), duration);
+            base.StartPowerUp();
         }
 
         protected override void EndPowerUp()

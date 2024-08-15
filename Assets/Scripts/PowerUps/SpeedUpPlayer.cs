@@ -11,7 +11,7 @@ namespace Assets.Scripts.PowerUps
         protected override void StartPowerUp()
         {
             PlayerController.Instance.SetVelocity(speedUpVelocity);
-            Invoke(nameof(EndPowerUp), duration);
+            base.StartPowerUp();
         }
 
         protected override void EndPowerUp()

@@ -8,13 +8,14 @@ namespace Assets.Scripts.CollectableItems
         [Header("Collectable Settings")]
         public UnityEvent onCollectEvent;
         public string tagToCompare;
+        public float timeToDeath = 0f;
 
         private void OnTriggerEnter(Collider collision)
         {
             if (collision.gameObject.CompareTag(tagToCompare))
             {
                 onCollect();
-                gameObject.SetActive(false);
+                Invoke(nameof(OnDesativate), timeToDeath);
                 Destroy(gameObject, 5f);
             }
         }
@@ -22,6 +23,11 @@ namespace Assets.Scripts.CollectableItems
         public virtual void onCollect()
         {
             onCollectEvent.Invoke();
+        }
+
+        private void OnDesativate()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
