@@ -1,15 +1,17 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.SubwaySurfShoppe.Core;
 using DG.Tweening;
-using Assets.Scripts.Managers;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
 {
-    public class MovementHelper : MonoBehaviour
+    public class MovementHelper : Singleton<MovementHelper>
     {
         [Header("Lerp Settings")]
         public float lerpTime;
         public Transform target;
+
+        private bool _isInvencible = false;
 
         private void Update()
         {
@@ -20,6 +22,8 @@ namespace Assets.Scripts.Player
         {
             if (collision.gameObject.CompareTag("Obstacle"))
             {
+                if (_isInvencible) return; 
+
                 StopPlayer(0f);
                 Invoke(nameof(EndGame), 2f);
             }
@@ -39,6 +43,11 @@ namespace Assets.Scripts.Player
         private void EndGame()
         {
             SceneManager.LoadScene(0);
+        }
+
+        public void ChangeStateIsInvencible()
+        {
+            _isInvencible = !_isInvencible;
         }
     }
 }
