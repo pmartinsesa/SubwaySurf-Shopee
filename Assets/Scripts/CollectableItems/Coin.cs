@@ -1,19 +1,20 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using Assets.Scripts.Player;
+using UnityEngine;
 
 namespace Assets.Scripts.CollectableItems
 {
-    public class Coin : MonoBehaviour
+    public class Coin : CollectableBase
     {
-        public UnityEvent onCollect;
-
-        private void OnTriggerEnter(Collider collision)
+        private bool _hasToBringCoing = false;
+        private void Update()
         {
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                onCollect.Invoke();
-                Destroy(gameObject);
-            }
+            if (!_hasToBringCoing) return;
+            transform.position = Vector3.Lerp(transform.position, MovementHelper.Instance.gameObject.transform.position, 10f * Time.deltaTime);
+        }
+        public override void onCollect()
+        {
+            _hasToBringCoing = true;
+            base.onCollect();
         }
     }
 }

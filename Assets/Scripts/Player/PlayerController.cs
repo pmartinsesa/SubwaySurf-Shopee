@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.SubwaySurfShoppe.Core;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : Singleton<PlayerController>
     {
         private const float GROUND_BOUNDARIES = 5f;
 
@@ -14,7 +15,7 @@ namespace Assets.Scripts.Player
         private Rigidbody _rigdbody;
         private bool _gameHasStarted = false;
 
-        private void Awake()
+        private void Start()
         {
             _pastPosition = transform.position;
             _rigdbody = gameObject.GetComponent<Rigidbody>();
@@ -24,6 +25,11 @@ namespace Assets.Scripts.Player
         {
             _rigdbody.velocity = Vector3.forward * staticVelocity;
             _gameHasStarted = true;
+        }
+
+        public void SetVelocity(float velocity)
+        {
+            _rigdbody.velocity = Vector3.forward * velocity;
         }
 
         private void Update()

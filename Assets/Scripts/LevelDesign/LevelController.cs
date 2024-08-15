@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.LevelDesign
 {
@@ -20,7 +21,7 @@ namespace Assets.Scripts.LevelDesign
         [Header("Game Object Settings")]
         public GameObject levelObject;
         public GameObject obstaclePrefab;
-        public GameObject coinPrefab;
+        public List<GameObject> collectableObjects;
 
         private void Start()
         {
@@ -29,18 +30,19 @@ namespace Assets.Scripts.LevelDesign
                 var obstacleScale = Random.Range(minObstacleXScale, maxObstacleXScale);
                 var xObstaclePosition = Random.Range(LEFT_BOUNDARIES, RIGHT_BOUNDARIES);
                 InstatiatePrefab(obstaclePrefab, new Vector3(obstacleScale, 1f, 1f), new Vector3(xObstaclePosition, -.5f, zPosition));
-                SetCoinPosition(xObstaclePosition, zPosition);
+                SetCollectablePosition(xObstaclePosition, zPosition);
             }
         }
 
-        private void SetCoinPosition(float xObstaclePosition, float zPosition)
+        private void SetCollectablePosition(float xObstaclePosition, float zPosition)
         {
-            var xCoinPosition = Mathf.Abs(xObstaclePosition - LEFT_BOUNDARIES) < Mathf.Abs(xObstaclePosition - RIGHT_BOUNDARIES) ?
+            var xCollectablePosition = Mathf.Abs(xObstaclePosition - LEFT_BOUNDARIES) < Mathf.Abs(xObstaclePosition - RIGHT_BOUNDARIES) ?
                     (xObstaclePosition - LEFT_BOUNDARIES) / 2 : (xObstaclePosition - RIGHT_BOUNDARIES) / 2;
+
             InstatiatePrefab(
-                coinPrefab,
+                collectableObjects[Random.Range(0, collectableObjects.Count)],
                 new Vector3(1f, 1f, 1f),
-                new Vector3(xCoinPosition, 1f, zPosition)
+                new Vector3(xCollectablePosition, 1f, zPosition)
             );
         }
 

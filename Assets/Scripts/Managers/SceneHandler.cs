@@ -5,13 +5,13 @@ namespace Assets.Scripts.Managers
 {
     public class SceneHandler : MonoBehaviour
     {
-        public PlayerController playerController;
+        [Header("Scene Settings")]
         public GameObject canvas;
 
         public void onPlay()
         {
             canvas.SetActive(false);
-            playerController.StartRun();
+            PlayerController.Instance.StartRun();
         }
     }
 }
