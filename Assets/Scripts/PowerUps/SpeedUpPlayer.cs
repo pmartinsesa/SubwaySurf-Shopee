@@ -16,7 +16,7 @@ namespace Assets.Scripts.PowerUps
 
         protected override void EndPowerUp()
         {
-            PlayerController.Instance.StartRun();
+            PlayerController.Instance.SetVelocity(20f);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.SubwaySurfShoppe.Core;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
@@ -10,6 +11,10 @@ namespace Assets.Scripts.Player
         [Header("Lerp Settings")]
         public float lerpTime;
         public Transform target;
+
+        [Header("Animation Settings")]
+        public UnityEvent onIdle;
+        public UnityEvent onDead;
 
         private bool _isInvencible = false;
 
@@ -25,12 +30,15 @@ namespace Assets.Scripts.Player
                 if (_isInvencible) return; 
 
                 StopPlayer(0f);
+                transform.DOMoveZ(-2f, 1f).SetRelative();
+                onDead.Invoke();
                 Invoke(nameof(EndGame), 2f);
             }
 
             if (collision.gameObject.CompareTag("Finish"))
             {
                 StopPlayer(2f);
+                onIdle.Invoke();
                 Invoke(nameof(EndGame), 2f);
             }
         }

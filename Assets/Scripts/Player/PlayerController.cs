@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.SubwaySurfShoppe.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Player
 {
@@ -10,6 +11,9 @@ namespace Assets.Scripts.Player
         [Header("Movement Settings")]
         public float speed;
         public float staticVelocity;
+
+        [Header("Animation Settings")]
+        public UnityEvent onRunning;
 
         private Vector3 _pastPosition;
         private Rigidbody _rigdbody;
@@ -24,6 +28,7 @@ namespace Assets.Scripts.Player
         public void StartRun()
         {
             _rigdbody.velocity = Vector3.forward * staticVelocity;
+            onRunning.Invoke();
             _gameHasStarted = true;
         }
 
