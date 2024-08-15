@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.LevelDesign
+namespace Assets.Scripts.CollectableItems
 {
-    public class CoinController : MonoBehaviour
+    public class Coin : MonoBehaviour
     {
         public UnityEvent onCollect;
 

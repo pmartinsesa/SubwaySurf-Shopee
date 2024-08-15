@@ -12,6 +12,7 @@ namespace Assets.Scripts.Player
 
         private Vector3 _pastPosition;
         private Rigidbody _rigdbody;
+        private bool _gameHasStarted = false;
 
         private void Awake()
         {
@@ -19,13 +20,17 @@ namespace Assets.Scripts.Player
             _rigdbody = gameObject.GetComponent<Rigidbody>();
         }
 
-        private void Start()
+        public void StartRun()
         {
             _rigdbody.velocity = Vector3.forward * staticVelocity;
+            _gameHasStarted = true;
         }
 
         private void Update()
         {
+            if (!_gameHasStarted)
+                return;
+
             if (Input.GetMouseButton(0))
             {
                 MoveByXPosition(Input.mousePosition.x - _pastPosition.x);

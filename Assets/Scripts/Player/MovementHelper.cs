@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using Assets.Scripts.Managers;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
 {
@@ -19,17 +21,24 @@ namespace Assets.Scripts.Player
             if (collision.gameObject.CompareTag("Obstacle"))
             {
                 StopPlayer(0f);
+                Invoke(nameof(EndGame), 2f);
             }
 
             if (collision.gameObject.CompareTag("Finish"))
             {
                 StopPlayer(2f);
+                Invoke(nameof(EndGame), 2f);
             }
         }
 
         private void StopPlayer(float stopTime)
         {
             DOTween.To(() => lerpTime, x => lerpTime = x, 0f, stopTime);
+        }
+
+        private void EndGame()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
