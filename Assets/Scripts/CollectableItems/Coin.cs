@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Player;
+﻿using Assets.Scripts.Managers;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts.CollectableItems
@@ -6,6 +7,12 @@ namespace Assets.Scripts.CollectableItems
     public class Coin : CollectableBase
     {
         private bool _hasToBringCoing = false;
+
+        public void Start()
+        {
+            onCollectEvent.AddListener(CollectableManager.Instance.addCoin); 
+        }
+
         private void Update()
         {
             if (!_hasToBringCoing) return;

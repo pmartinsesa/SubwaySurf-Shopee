@@ -17,7 +17,7 @@ namespace Assets.Scripts.Player
 
         private Vector3 _pastPosition;
         private Rigidbody _rigdbody;
-        private bool _gameHasStarted = false;
+        public bool _gameHasStarted = false;
 
         private void Start()
         {
