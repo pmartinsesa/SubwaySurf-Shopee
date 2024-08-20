@@ -29,7 +29,7 @@ namespace Assets.Scripts.LevelDesign
             {
                 var obstacleScale = Random.Range(minObstacleXScale, maxObstacleXScale);
                 var xObstaclePosition = Random.Range(LEFT_BOUNDARIES, RIGHT_BOUNDARIES);
-                InstatiatePrefab(obstaclePrefab, new Vector3(obstacleScale, 1f, 1f), new Vector3(xObstaclePosition, -.5f, zPosition));
+                InstatiatePrefab(obstaclePrefab, new Vector3(obstacleScale, 1f, 1f), new Vector3(xObstaclePosition, 0f, zPosition));
                 SetCollectablePosition(xObstaclePosition, zPosition);
             }
         }

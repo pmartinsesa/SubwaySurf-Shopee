@@ -24,7 +24,7 @@ namespace Assets.Scripts.PowerUps
 
         protected override void EndPowerUp()
         {
-            _playerTransform.DOMoveY(.3f, .5f);
+            _playerTransform.DOMoveY(0f, .5f);
         }
     }
 }
