@@ -898,6 +898,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  spawnPlayerTime: 0.2
+  getPowerScale: 1.2
+  getPowerTime: 0.2
 --- !u!65 &835024601
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -983,8 +986,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849335236}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23344918, y: -0.05793309, z: 0.013934929, w: 0.9705417}
-  m_LocalPosition: {x: 1.7511063, y: 7.5277967, z: -15.086564}
+  m_LocalRotation: {x: 0.23344815, y: -0.057931684, z: 0.013934528, w: 0.970542}
+  m_LocalPosition: {x: 1.7510768, y: 7.527773, z: -15.08658}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1257,8 +1260,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23344918, y: -0.05793309, z: 0.013934929, w: 0.9705417}
-  m_LocalPosition: {x: 1.7511063, y: 7.5277967, z: -15.086564}
+  m_LocalRotation: {x: 0.23344815, y: -0.057931684, z: 0.013934528, w: 0.970542}
+  m_LocalPosition: {x: 1.7510768, y: 7.527773, z: -15.08658}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
