@@ -15,6 +15,10 @@ namespace Assets.Scripts.Player
         [Header("Animation Settings")]
         public UnityEvent onIdle;
         public UnityEvent onDead;
+        public float spawnPlayerTime = .2f;
+        public float getPowerScale = 1.2f;
+        public float getPowerTime = .2f;
+
 
         private bool _isInvencible = false;
 
@@ -56,6 +60,16 @@ namespace Assets.Scripts.Player
         public void ChangeStateIsInvencible()
         {
             _isInvencible = !_isInvencible;
+        }
+    
+        public void SpawnPlayer()
+        {
+            transform.DOScale(1f, spawnPlayerTime);
+        }
+
+        public void OnGetPower()
+        {
+            transform.DOScale(getPowerScale, getPowerTime).From();
         }
     }
 }

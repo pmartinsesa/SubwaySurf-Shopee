@@ -14,6 +14,7 @@ namespace Assets.Scripts.Player
 
         [Header("Animation Settings")]
         public UnityEvent onRunning;
+        public UnityEvent onSpawnPlawer;
 
         private Vector3 _pastPosition;
         private Rigidbody _rigdbody;
@@ -29,6 +30,7 @@ namespace Assets.Scripts.Player
         {
             _rigdbody.velocity = Vector3.forward * staticVelocity;
             onRunning.Invoke();
+            onSpawnPlawer.Invoke();
             _gameHasStarted = true;
         }
 
