@@ -1,16 +1,27 @@
 ﻿using Assets.Scripts.Managers;
 using Assets.Scripts.Player;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.Scripts.CollectableItems
 {
     public class Coin : CollectableBase
     {
+        [Header("Animation settings")]
+        public float coinScale;
+        public float animationduration;
+        public Ease animationtype;
+
         private bool _hasToBringCoing = false;
 
         public void Start()
         {
             onCollectEvent.AddListener(CollectableManager.Instance.addCoin); 
+        }
+
+        private void OnEnable()
+        {
+            gameObject.transform.DOScale(coinScale, animationduration).From().SetEase(animationtype);
         }
 
         private void Update()

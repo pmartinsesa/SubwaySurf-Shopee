@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CollectableItems;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts.PowerUps
@@ -20,6 +21,7 @@ namespace Assets.Scripts.PowerUps
 
         protected virtual void StartPowerUp()
         {
+            MovementHelper.Instance.OnGetPower();
             Invoke(nameof(EndPowerUp), duration);
         }
 

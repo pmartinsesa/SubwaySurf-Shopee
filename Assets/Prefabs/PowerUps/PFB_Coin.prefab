@@ -163,3 +163,6 @@ MonoBehaviour:
         m_CallState: 1
   tagToCompare: CoinCollector
   timeToDeath: 0.15
+  coinScale: 2
+  animationduration: 0.3
+  animationtype: 27
