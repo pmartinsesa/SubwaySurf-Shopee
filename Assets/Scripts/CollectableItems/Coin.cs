@@ -12,6 +12,9 @@ namespace Assets.Scripts.CollectableItems
         public float animationduration;
         public Ease animationtype;
 
+        [Header("Particle system settings")]
+        public ParticleSystem coinParticle;
+
         private bool _hasToBringCoing = false;
 
         public void Start()
@@ -32,6 +35,8 @@ namespace Assets.Scripts.CollectableItems
         public override void onCollect()
         {
             _hasToBringCoing = true;
+            coinParticle.transform.parent = null;
+            coinParticle.Play();
             base.onCollect();
         }
     }

@@ -41,9 +41,10 @@ namespace Assets.Scripts.Player
 
             if (collision.gameObject.CompareTag("Finish"))
             {
-                StopPlayer(2f);
+                collision.GetComponent<ParticleSystem>()?.Play();
+                StopPlayer(1f);
                 onIdle.Invoke();
-                Invoke(nameof(EndGame), 2f);
+                Invoke(nameof(EndGame), 4f);
             }
         }
 
